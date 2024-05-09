@@ -6,6 +6,8 @@ import {z} from 'zod';
 import {zColor} from '@remotion/zod-types';
 import {ProgressTimer} from './Components/ProgressTimer';
 import {useCurrentFrame} from 'remotion';
+import {LofiLogo} from './Components/LofiLogo';
+import {Background} from './Components/Background';
 
 export const myCompSchema = z.object({
 	titleText: z.string(),
@@ -21,6 +23,8 @@ export const MyComposition: React.FC<z.infer<typeof myCompSchema>> = ({
 	const frame = useCurrentFrame();
 	return (
 		<AbsoluteFill className="bg-gray-100 justify-center items-center">
+			<Background />
+			<LofiLogo></LofiLogo>
 			<ProgressTimer absoluteFrame={frame} componentLength={1800} />
 			{/* <div className="m-10" />
 			<Logo logoColor={propThree} />
