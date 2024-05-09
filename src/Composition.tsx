@@ -4,6 +4,8 @@ import {Subtitle} from './Subtitle';
 import {Title} from './Title';
 import {z} from 'zod';
 import {zColor} from '@remotion/zod-types';
+import {ProgressTimer} from './Components/ProgressTimer';
+import {useCurrentFrame} from 'remotion';
 
 export const myCompSchema = z.object({
 	titleText: z.string(),
@@ -16,13 +18,15 @@ export const MyComposition: React.FC<z.infer<typeof myCompSchema>> = ({
 	titleColor: propTwo,
 	logoColor: propThree,
 }) => {
+	const frame = useCurrentFrame();
 	return (
-		<AbsoluteFill className="bg-gray-100 items-center justify-center">
-			<div className="m-10" />
+		<AbsoluteFill className="bg-gray-100 justify-center items-center">
+			<ProgressTimer absoluteFrame={frame} componentLength={1800} />
+			{/* <div className="m-10" />
 			<Logo logoColor={propThree} />
 			<div className="m-3" />
 			<Title titleText={propOne} titleColor={propTwo} />
-			<Subtitle />
+			<Subtitle /> */}
 		</AbsoluteFill>
 	);
 };

@@ -8,10 +8,10 @@ export const RemotionRoot: React.FC = () => {
 			<Composition
 				id="MyComp"
 				component={MyComposition}
-				durationInFrames={240}
+				durationInFrames={2400}
 				fps={30}
-				width={1280}
-				height={720}
+				width={1920}
+				height={1080}
 				schema={myCompSchema}
 				defaultProps={{
 					titleText: 'Welcome to Remotion with Tailwind CSS',
