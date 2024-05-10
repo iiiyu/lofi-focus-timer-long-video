@@ -1,5 +1,6 @@
 import {useAudioData, visualizeAudio} from '@remotion/media-utils';
 import {
+	AbsoluteFill,
 	Audio,
 	Sequence,
 	staticFile,
@@ -14,6 +15,7 @@ export const LofiMusic: React.FC = () => {
 	const frame = useCurrentFrame();
 	const {width, height, fps} = useVideoConfig();
 	const audioData = useAudioData(music);
+	console.log('frame: ', frame);
 
 	if (!audioData) {
 		return null;
@@ -30,7 +32,7 @@ export const LofiMusic: React.FC = () => {
 	// the longer the bar
 	return (
 		// <div className="w-full h-full" >
-		<Sequence>
+		<AbsoluteFill>
 			<Audio src={music} />
 			<div className="container w-full h-full">
 				<AudioViz
@@ -48,7 +50,7 @@ export const LofiMusic: React.FC = () => {
 					<div style={{width: 1000 * v, height: 15, backgroundColor: 'blue'}} />
 				);
 			})} */}
-		</Sequence>
+		</AbsoluteFill>
 		// </div>
 	);
 };

@@ -5,7 +5,7 @@ import {minutesToFrames} from './Utilities/Tools';
 
 export const RemotionRoot: React.FC = () => {
 	const fps = 30;
-	const totalFrames = minutesToFrames(60, fps) + 15;
+	const totalFrames = minutesToFrames(1, fps) + 30 + 120;
 	return (
 		<>
 			<Composition

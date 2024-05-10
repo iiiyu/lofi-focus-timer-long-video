@@ -17,6 +17,7 @@
   "dependencies": {
     "@remotion/bundler": "4.0.153",
     "@remotion/cli": "4.0.153",
+    "@remotion/google-fonts": "^4.0.153",
     "@remotion/media-utils": "^4.0.153",
     "@remotion/zod-types": "4.0.153",
     "react": "^18.0.0",

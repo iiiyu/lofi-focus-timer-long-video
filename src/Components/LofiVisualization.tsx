@@ -80,6 +80,8 @@ export const LofiVisualization = () => {
 	// Smaller number = faster computation
 	const nSamples = 512;
 
+	// console.log('frame: ', frame);
+
 	const visualizationValues = visualizeMultipleAudio({
 		fps,
 		frame,
@@ -91,7 +93,7 @@ export const LofiVisualization = () => {
 	const frequencyData = visualizationValues.slice(0, 0.7 * nSamples);
 
 	return (
-		<Sequence from={0}>
+		<>
 			{/* <Audio src={speechSrc} /> */}
 			<Audio src={music} />
 			<div
@@ -349,6 +351,6 @@ export const LofiVisualization = () => {
 					/>
 				</div>
 			</div> */}
-		</Sequence>
+		</>
 	);
 };

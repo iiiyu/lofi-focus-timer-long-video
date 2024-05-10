@@ -1,4 +1,4 @@
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, Sequence} from 'remotion';
 import {Logo} from './Logo';
 import {Subtitle} from './Subtitle';
 import {Title} from './Title';
@@ -11,6 +11,7 @@ import {Background} from './Components/Background';
 import {LofiMusic} from './Components/LofiMusic';
 import {LofiVisualization} from './Components/LofiVisualization';
 import {minutesToFrames} from './Utilities/Tools';
+import {LofiIntro} from './Components/LofiIntro';
 
 export const myCompSchema = z.object({
 	titleText: z.string(),
@@ -25,19 +26,18 @@ export const MyComposition: React.FC<z.infer<typeof myCompSchema>> = ({
 }) => {
 	const frame = useCurrentFrame();
 	const fps = 30;
-	const totalFrames = minutesToFrames(60, fps);
+	const totalFrames = minutesToFrames(1, fps) + 30;
 	return (
 		<AbsoluteFill className="bg-gray-100 justify-center items-center">
 			<Background />
-			<LofiVisualization />
-			{/* <LofiMusic></LofiMusic> */}
-			<LofiLogo></LofiLogo>
-			<ProgressTimer absoluteFrame={frame} componentLength={totalFrames} />
-			{/* <div className="m-10" />
-			<Logo logoColor={propThree} />
-			<div className="m-3" />
-			<Title titleText={propOne} titleColor={propTwo} />
-			<Subtitle /> */}
+			<Sequence durationInFrames={120}>
+				<LofiIntro />
+			</Sequence>
+			<Sequence from={120} durationInFrames={totalFrames}>
+				<LofiVisualization />
+				<LofiLogo></LofiLogo>
+				<ProgressTimer absoluteFrame={frame} componentLength={totalFrames} />
+			</Sequence>
 		</AbsoluteFill>
 	);
 };
