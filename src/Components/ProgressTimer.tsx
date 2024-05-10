@@ -32,10 +32,10 @@ export const ProgressTimer: React.FC<{
 	return (
 		<div className="px-8 w-full fixed bottom-16" style={{opacity: '0.8'}}>
 			<div className="flex justify-between mb-1 w-full">
-				<span className="text-8xl font-medium text-sky-500">
+				<span className="text-8xl font-medium text-slate-200">
 					{countdownNumber}
 				</span>
-				<span className="text-6xl font-medium text-sky-500 ">
+				<span className="text-6xl font-medium text-slate-200 ">
 					{progressNumber}%
 				</span>
 			</div>

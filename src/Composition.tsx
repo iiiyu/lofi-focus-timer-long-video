@@ -10,6 +10,7 @@ import {LofiLogo} from './Components/LofiLogo';
 import {Background} from './Components/Background';
 import {LofiMusic} from './Components/LofiMusic';
 import {LofiVisualization} from './Components/LofiVisualization';
+import {minutesToFrames} from './Utilities/Tools';
 
 export const myCompSchema = z.object({
 	titleText: z.string(),
@@ -23,13 +24,15 @@ export const MyComposition: React.FC<z.infer<typeof myCompSchema>> = ({
 	logoColor: propThree,
 }) => {
 	const frame = useCurrentFrame();
+	const fps = 30;
+	const totalFrames = minutesToFrames(60, fps);
 	return (
 		<AbsoluteFill className="bg-gray-100 justify-center items-center">
 			<Background />
 			<LofiVisualization />
 			{/* <LofiMusic></LofiMusic> */}
 			<LofiLogo></LofiLogo>
-			<ProgressTimer absoluteFrame={frame} componentLength={1800} />
+			<ProgressTimer absoluteFrame={frame} componentLength={totalFrames} />
 			{/* <div className="m-10" />
 			<Logo logoColor={propThree} />
 			<div className="m-3" />
