@@ -8,6 +8,8 @@ import {ProgressTimer} from './Components/ProgressTimer';
 import {useCurrentFrame} from 'remotion';
 import {LofiLogo} from './Components/LofiLogo';
 import {Background} from './Components/Background';
+import {LofiMusic} from './Components/LofiMusic';
+import {LofiVisualization} from './Components/LofiVisualization';
 
 export const myCompSchema = z.object({
 	titleText: z.string(),
@@ -24,6 +26,8 @@ export const MyComposition: React.FC<z.infer<typeof myCompSchema>> = ({
 	return (
 		<AbsoluteFill className="bg-gray-100 justify-center items-center">
 			<Background />
+			<LofiVisualization />
+			{/* <LofiMusic></LofiMusic> */}
 			<LofiLogo></LofiLogo>
 			<ProgressTimer absoluteFrame={frame} componentLength={1800} />
 			{/* <div className="m-10" />
