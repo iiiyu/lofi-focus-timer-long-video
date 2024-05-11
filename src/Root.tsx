@@ -1,11 +1,13 @@
 import {Composition} from 'remotion';
 import {MyComposition, lofiSchema} from './Composition';
 import './style.css';
-import {minutesToFrames} from './Utilities/Tools';
+import {getMinutesWithHours, minutesToFrames} from './Utilities/Tools';
 
 export const RemotionRoot: React.FC = () => {
 	const fps = 30;
-	const totalFrames = minutesToFrames(1, fps) + 30 + 120;
+	const totalHours = 3;
+	const minutes = getMinutesWithHours(totalHours);
+	const totalFrames = minutesToFrames(minutes, fps) + 30 + 120;
 	return (
 		<>
 			<Composition
@@ -17,7 +19,7 @@ export const RemotionRoot: React.FC = () => {
 				height={1080}
 				schema={lofiSchema}
 				defaultProps={{
-					totalHours: 2,
+					totalHours: totalHours,
 				}}
 			/>
 		</>

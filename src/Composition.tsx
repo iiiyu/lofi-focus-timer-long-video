@@ -29,12 +29,12 @@ export const MyComposition: React.FC<z.infer<typeof lofiSchema>> = ({
 		<AbsoluteFill className="bg-gray-100 justify-center items-center">
 			<Background />
 			<Sequence durationInFrames={120}>
-				<Audio src={countdown} />
+				<Audio src={countdown} volume={0.1} />
 				<LofiIntro />
 			</Sequence>
 			<Sequence from={120} durationInFrames={totalFrames}>
 				<LofiVisualization />
-				<LofiLogo></LofiLogo>
+				<LofiLogo />
 				<ProgressTimer absoluteFrame={frame} componentLength={totalFrames} />
 			</Sequence>
 		</AbsoluteFill>
