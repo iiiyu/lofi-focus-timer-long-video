@@ -1,4 +1,4 @@
-import {AbsoluteFill, Sequence} from 'remotion';
+import {AbsoluteFill, Sequence, staticFile, Audio} from 'remotion';
 import {Logo} from './Logo';
 import {Subtitle} from './Subtitle';
 import {Title} from './Title';
@@ -27,10 +27,12 @@ export const MyComposition: React.FC<z.infer<typeof myCompSchema>> = ({
 	const frame = useCurrentFrame();
 	const fps = 30;
 	const totalFrames = minutesToFrames(1, fps) + 30;
+	const countdown = staticFile('countdown.mp3');
 	return (
 		<AbsoluteFill className="bg-gray-100 justify-center items-center">
 			<Background />
 			<Sequence durationInFrames={120}>
+				<Audio src={countdown} />
 				<LofiIntro />
 			</Sequence>
 			<Sequence from={120} durationInFrames={totalFrames}>
