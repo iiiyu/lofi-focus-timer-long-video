@@ -10,23 +10,20 @@ import {LofiLogo} from './Components/LofiLogo';
 import {Background} from './Components/Background';
 import {LofiMusic} from './Components/LofiMusic';
 import {LofiVisualization} from './Components/LofiVisualization';
-import {minutesToFrames} from './Utilities/Tools';
+import {minutesToFrames, getMinutesWithHours} from './Utilities/Tools';
 import {LofiIntro} from './Components/LofiIntro';
 
-export const myCompSchema = z.object({
-	titleText: z.string(),
-	titleColor: zColor(),
-	logoColor: zColor(),
+export const lofiSchema = z.object({
+	totalHours: z.number(),
 });
 
-export const MyComposition: React.FC<z.infer<typeof myCompSchema>> = ({
-	titleText: propOne,
-	titleColor: propTwo,
-	logoColor: propThree,
+export const MyComposition: React.FC<z.infer<typeof lofiSchema>> = ({
+	totalHours: propOne,
 }) => {
 	const frame = useCurrentFrame();
 	const fps = 30;
-	const totalFrames = minutesToFrames(1, fps) + 30;
+	const minutes = getMinutesWithHours(propOne);
+	const totalFrames = minutesToFrames(minutes, fps) + 30;
 	const countdown = staticFile('countdown.mp3');
 	return (
 		<AbsoluteFill className="bg-gray-100 justify-center items-center">

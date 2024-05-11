@@ -1,5 +1,5 @@
 import {Composition} from 'remotion';
-import {MyComposition, myCompSchema} from './Composition';
+import {MyComposition, lofiSchema} from './Composition';
 import './style.css';
 import {minutesToFrames} from './Utilities/Tools';
 
@@ -15,11 +15,9 @@ export const RemotionRoot: React.FC = () => {
 				fps={fps}
 				width={1920}
 				height={1080}
-				schema={myCompSchema}
+				schema={lofiSchema}
 				defaultProps={{
-					titleText: 'Welcome to Remotion with Tailwind CSS',
-					titleColor: '#000000',
-					logoColor: '#00bfff',
+					totalHours: 2,
 				}}
 			/>
 		</>
