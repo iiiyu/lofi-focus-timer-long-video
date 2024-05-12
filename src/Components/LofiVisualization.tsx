@@ -12,6 +12,7 @@ import {BarsVisualization} from './visualizations/BarsVisualization';
 import {HillsVisualization} from './visualizations/HillsVisualization';
 import {RadialBarsVisualization} from './visualizations/RadialBarsVisualization';
 import {WaveVisualization} from './visualizations/WaveVisualization';
+import {LofiSectionSchema} from '../Schema/props.schema';
 
 /**
  * Component API:s
@@ -48,8 +49,6 @@ const combineValues = (length: number, sources: Array<number[]>): number[] => {
 	});
 };
 
-const music = staticFile('test_music.mp3');
-
 const visualizeMultipleAudio = ({
 	sources,
 	...options
@@ -66,11 +65,16 @@ const visualizeMultipleAudio = ({
 	return combineValues(options.numberOfSamples, sourceValues);
 };
 
-export const LofiVisualization = () => {
+export const LofiVisualization: React.FC<{section: LofiSectionSchema}> = ({
+	section,
+}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	// const speechData = useAudioData(speechSrc);
-	const musicData = useAudioData(music);
+
+	console.log(section);
+	const bgm = staticFile(section.bgmPath);
+	const musicData = useAudioData(bgm);
 
 	// if (!speechData) return null;
 	if (!musicData) return null;
@@ -94,7 +98,7 @@ export const LofiVisualization = () => {
 
 	return (
 		<>
-			<Audio src={music} />
+			<Audio src={bgm} />
 			<div
 				className="w-full h-full justify-center items-center flex"
 				style={{opacity: '0.8'}}

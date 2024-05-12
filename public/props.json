@@ -1,0 +1,33 @@
+{
+	"totalHours": 2,
+	"sections": [
+		{
+			"type": "Pomodoro",
+			"bgmPath": "test_music.mp3",
+			"startVoicePath": "test_voice.mp3",
+			"endVoicePath": "test_voice.mp3",
+			"sectionLength": 25
+		},
+		{
+			"type": "Break",
+			"bgmPath": "test_music.mp3",
+			"startVoicePath": "test_voice.mp3",
+			"endVoicePath": "test_voice.mp3",
+			"sectionLength": 5
+		},
+		{
+			"type": "Pomodoro",
+			"bgmPath": "test_music.mp3",
+			"startVoicePath": "test_voice.mp3",
+			"endVoicePath": "test_voice.mp3",
+			"sectionLength": 25
+		},
+		{
+			"type": "Break",
+			"bgmPath": "test_music.mp3",
+			"startVoicePath": "test_voice.mp3",
+			"endVoicePath": "test_voice.mp3",
+			"sectionLength": 5
+		}
+	]
+}
