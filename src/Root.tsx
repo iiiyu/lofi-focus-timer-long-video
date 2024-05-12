@@ -5,7 +5,7 @@ import {getMinutesWithHours, minutesToFrames} from './Utilities/Tools';
 
 export const RemotionRoot: React.FC = () => {
 	const fps = 30;
-	const totalHours = 3;
+	const totalHours = 2;
 	const minutes = getMinutesWithHours(totalHours);
 	const totalFrames = minutesToFrames(minutes, fps) + 30 + 120;
 	return (

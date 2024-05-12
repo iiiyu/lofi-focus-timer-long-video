@@ -48,7 +48,7 @@ const combineValues = (length: number, sources: Array<number[]>): number[] => {
 	});
 };
 
-const music = staticFile('music.mp3');
+const music = staticFile('test_music.mp3');
 
 const visualizeMultipleAudio = ({
 	sources,
