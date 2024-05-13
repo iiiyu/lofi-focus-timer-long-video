@@ -8,8 +8,8 @@ export const lofiAudioDataSchema = z.object({
 export const lofiSectionSchema = z.object({
 	type: z.enum(['Pomodoro', 'Break']),
 	bgm: lofiAudioDataSchema,
-	startVoice: lofiAudioDataSchema.nullable(),
-	endVoice: lofiAudioDataSchema.nullable(),
+	startVoice: lofiAudioDataSchema.nullish(),
+	endVoice: lofiAudioDataSchema.nullish(),
 	sectionDurationFrames: z.number(),
 });
 

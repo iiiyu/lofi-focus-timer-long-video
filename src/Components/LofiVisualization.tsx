@@ -100,6 +100,8 @@ export const LofiVisualization: React.FC<{section: LofiSectionSchema}> = ({
 	const frequencyData = visualizationValues.slice(0, 0.7 * nSamples);
 	const isFirst = isFirstSection(section);
 	const isP = isPomodoro(section);
+	console.log('isFirst: ', isFirst);
+	console.log('section: ', section);
 	const volume = interpolate(
 		frame,
 		[

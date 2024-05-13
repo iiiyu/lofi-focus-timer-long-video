@@ -5,5 +5,5 @@ export function isPomodoro(section: LofiSectionSchema): boolean {
 }
 
 export function isFirstSection(section: LofiSectionSchema): boolean {
-	return section.startVoice !== null && section.endVoice !== null;
+	return !!section.startVoice && !!section.endVoice;
 }
