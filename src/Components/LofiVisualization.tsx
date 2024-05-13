@@ -2,6 +2,7 @@ import {AudioData, useAudioData, visualizeAudio} from '@remotion/media-utils';
 import {
 	Audio,
 	Sequence,
+	interpolate,
 	staticFile,
 	useCurrentFrame,
 	useVideoConfig,
@@ -13,6 +14,7 @@ import {HillsVisualization} from './visualizations/HillsVisualization';
 import {RadialBarsVisualization} from './visualizations/RadialBarsVisualization';
 import {WaveVisualization} from './visualizations/WaveVisualization';
 import {LofiSectionSchema} from '../Schema/props.schema';
+import {isFirstSection, isPomodoro} from '../Schema/props';
 
 /**
  * Component API:s
@@ -68,12 +70,13 @@ const visualizeMultipleAudio = ({
 export const LofiVisualization: React.FC<{section: LofiSectionSchema}> = ({
 	section,
 }) => {
+	// console.log('yyy');
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	// const speechData = useAudioData(speechSrc);
 
-	console.log(section);
-	const bgm = staticFile(section.bgmPath);
+	// console.log(section);
+	const bgm = staticFile(section.bgm.path);
 	const musicData = useAudioData(bgm);
 
 	// if (!speechData) return null;
@@ -95,24 +98,87 @@ export const LofiVisualization: React.FC<{section: LofiSectionSchema}> = ({
 
 	// optional: use only part of the values
 	const frequencyData = visualizationValues.slice(0, 0.7 * nSamples);
-
+	const isFirst = isFirstSection(section);
+	const isP = isPomodoro(section);
+	const volume = interpolate(
+		frame,
+		[
+			0,
+			300,
+			section.sectionDurationFrames - 300,
+			section.sectionDurationFrames,
+		],
+		[0, 1, 1, 0],
+		{
+			extrapolateLeft: 'clamp',
+		},
+	);
 	return (
 		<>
-			<Audio src={bgm} />
-			<div
-				className="w-full h-full justify-center items-center flex"
-				style={{opacity: '0.8'}}
-			>
-				<BarsVisualization
-					frequencyData={frequencyData}
-					width={1080}
-					height={240}
-					lineThickness={16}
-					gapSize={8}
-					roundness={8}
-					color="#00bfff"
-				/>
-			</div>
+			<Sequence from={0} durationInFrames={Infinity}>
+				<Audio src={bgm} volume={volume} />
+				<div
+					className="w-full h-full justify-center items-center flex"
+					style={{opacity: '0.8'}}
+				>
+					<BarsVisualization
+						frequencyData={frequencyData}
+						width={1080}
+						height={240}
+						lineThickness={16}
+						gapSize={8}
+						roundness={8}
+						color="#00bfff"
+					/>
+				</div>
+			</Sequence>
+			{isFirst ? (
+				<>
+					<Sequence
+						from={0}
+						durationInFrames={section.startVoice?.durationFrames}
+					>
+						<Audio src={staticFile(section.startVoice?.path || '')} />
+					</Sequence>
+					<Sequence
+						from={
+							section.sectionDurationFrames -
+							(section.endVoice?.durationFrames || 0)
+						}
+						durationInFrames={section.endVoice?.durationFrames}
+					>
+						<Audio src={staticFile(section.endVoice?.path || '')} />
+					</Sequence>
+				</>
+			) : (
+				<>
+					{isP ? (
+						<>
+							<Sequence
+								from={
+									section.sectionDurationFrames -
+									(section.endVoice?.durationFrames || 0)
+								}
+								durationInFrames={section.endVoice?.durationFrames}
+							>
+								<Audio src={staticFile(section.endVoice?.path || '')} />
+							</Sequence>
+						</>
+					) : (
+						<>
+							<Sequence
+								from={
+									section.sectionDurationFrames -
+									(section.startVoice?.durationFrames || 0)
+								}
+								durationInFrames={section.startVoice?.durationFrames}
+							>
+								<Audio src={staticFile(section.startVoice?.path || '')} />
+							</Sequence>
+						</>
+					)}
+				</>
+			)}
 		</>
 	);
 };

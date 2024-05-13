@@ -7,3 +7,5 @@ dist
 out
 /public/test_music.mp3
 /public/music.mp3
+*.mp3
+*.json

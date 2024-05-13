@@ -1,11 +1,16 @@
 import {z} from 'zod';
 
+export const lofiAudioDataSchema = z.object({
+	path: z.string(),
+	durationFrames: z.number(),
+});
+
 export const lofiSectionSchema = z.object({
 	type: z.enum(['Pomodoro', 'Break']),
-	bgmPath: z.string(),
-	startVoicePath: z.string().nullable(),
-	endVoicePath: z.string().nullable(),
-	sectionLength: z.number(),
+	bgm: lofiAudioDataSchema,
+	startVoice: lofiAudioDataSchema.nullable(),
+	endVoice: lofiAudioDataSchema.nullable(),
+	sectionDurationFrames: z.number(),
 });
 
 export const lofiSchema = z.object({
@@ -15,3 +20,4 @@ export const lofiSchema = z.object({
 
 export type LofiSchema = z.infer<typeof lofiSchema>;
 export type LofiSectionSchema = z.infer<typeof lofiSectionSchema>;
+export type LofiAudioDataSchema = z.infer<typeof lofiAudioDataSchema>;
