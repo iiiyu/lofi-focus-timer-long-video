@@ -100,8 +100,7 @@ export const LofiVisualization: React.FC<{section: LofiSectionSchema}> = ({
 	const frequencyData = visualizationValues.slice(0, 0.7 * nSamples);
 	const isFirst = isFirstSection(section);
 	const isP = isPomodoro(section);
-	console.log('isFirst: ', isFirst);
-	console.log('section: ', section);
+
 	const volume = interpolate(
 		frame,
 		[
@@ -119,19 +118,35 @@ export const LofiVisualization: React.FC<{section: LofiSectionSchema}> = ({
 		<>
 			<Sequence from={0} durationInFrames={Infinity}>
 				<Audio src={bgm} volume={volume} />
-				<div
-					className="w-full h-full justify-center items-center flex"
-					style={{opacity: '0.8'}}
-				>
-					<BarsVisualization
-						frequencyData={frequencyData}
-						width={1080}
-						height={240}
-						lineThickness={16}
-						gapSize={8}
-						roundness={8}
-						color="#00bfff"
-					/>
+				<div className="w-full h-full flex flex-row gap-2 justify-center">
+					<div
+						className="justify-center items-center flex scale-x-[-1]"
+						style={{opacity: '0.8'}}
+					>
+						<BarsVisualization
+							frequencyData={frequencyData}
+							width={512}
+							height={240}
+							lineThickness={16}
+							gapSize={8}
+							roundness={8}
+							color="#f0a2af"
+						/>
+					</div>
+					<div
+						className="justify-center items-center flex"
+						style={{opacity: '0.8'}}
+					>
+						<BarsVisualization
+							frequencyData={frequencyData}
+							width={512}
+							height={240}
+							lineThickness={16}
+							gapSize={8}
+							roundness={8}
+							color="#f0a2af"
+						/>
+					</div>
 				</div>
 			</Sequence>
 			{isFirst ? (

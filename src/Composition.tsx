@@ -23,7 +23,7 @@ export const LofiComposition: React.FC<z.infer<typeof lofiSchema>> = ({
 	const frame = useCurrentFrame();
 	const fps = 30;
 	const minutes = getMinutesWithHours(totalHours);
-	const progressTimerFrames = minutesToFrames(14, fps) + 30;
+	const progressTimerFrames = minutesToFrames(minutes, fps) + 30;
 	const countdown = staticFile('countdown.mp3');
 	const introFrames = 120;
 	// let fromFrame = 120;
@@ -41,8 +41,6 @@ export const LofiComposition: React.FC<z.infer<typeof lofiSchema>> = ({
 				</Series.Sequence>
 				{sections.map((section, index) => {
 					const {sectionDurationFrames} = section;
-					// const durationInFrames = minutesToFrames(sectionDurationFrames, fps);
-					// console.log('section', section);
 					return (
 						<Series.Sequence
 							durationInFrames={sectionDurationFrames}

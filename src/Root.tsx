@@ -6,7 +6,7 @@ import {LofiSchema, lofiSchema} from './Schema/props.schema';
 
 export const RemotionRoot: React.FC = () => {
 	const props: LofiSchema = {
-		totalHours: 1,
+		totalHours: 4,
 		sections: [
 			{
 				type: 'Pomodoro',
@@ -63,9 +63,9 @@ export const RemotionRoot: React.FC = () => {
 		],
 	};
 	const fps = 30;
-	const totalFrames = 25320;
-	// const minutes = getMinutesWithHours(props.totalHours);
-	// const totalFrames = minutesToFrames(minutes, fps) + 30 + 120;
+	// const totalFrames = 25320;
+	const minutes = getMinutesWithHours(props.totalHours);
+	const totalFrames = minutesToFrames(minutes, fps) + 30 + 120;
 	return (
 		<>
 			<Composition

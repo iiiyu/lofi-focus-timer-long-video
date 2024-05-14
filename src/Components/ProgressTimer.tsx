@@ -41,7 +41,7 @@ export const ProgressTimer: React.FC<{
 			</div>
 			<div className="w-full bg-gray-200 rounded-full h-8 text-center font-bold justify-center items-center">
 				<div
-					className="bg-sky-600 h-8 rounded-full "
+					className="bg-pink-400 h-8 rounded-full "
 					style={{width: `${progress}%`}}
 				></div>
 			</div>
