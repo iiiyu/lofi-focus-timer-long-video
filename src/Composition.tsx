@@ -56,8 +56,11 @@ export const LofiComposition: React.FC<z.infer<typeof lofiSchema>> = ({
 			<Sequence from={introFrames} durationInFrames={progressTimerFrames}>
 				<ProgressTimer
 					absoluteFrame={frame}
+					type={2}
 					durationInFrames={progressTimerFrames}
 					processBarColour={'bg-sky-500'}
+					isShowCountdown={true}
+					isShowPercentage={true}
 				/>
 			</Sequence>
 		</AbsoluteFill>
