@@ -1,25 +1,42 @@
-import {interpolate} from 'remotion';
-import {useCurrentFrame} from 'remotion';
+import {interpolate, useCurrentFrame} from 'remotion';
 import React from 'react';
+import {z} from 'zod';
 
-export const ProgressTimer: React.FC<{
-	absoluteFrame: number;
-	componentLength: number;
-}> = ({absoluteFrame, componentLength}) => {
+export const progressTimerInputSchema = z.object({
+	absoluteFrame: z.number(),
+	durationInFrames: z.number(),
+	isShowCountdown: z.boolean().nullish(),
+	isShowPercentage: z.boolean().nullish(),
+	countdownTextColour: z.string().nullish(),
+	percentageTextColour: z.string().nullish(),
+	processBarColour: z.string().nullish(),
+});
+
+export type ProgressTimerInputSchema = z.infer<typeof progressTimerInputSchema>;
+
+export const ProgressTimer: React.FC<ProgressTimerInputSchema> = ({
+	absoluteFrame = 0,
+	durationInFrames = 0,
+	isShowCountdown = true,
+	isShowPercentage = true,
+	countdownTextColour = 'text-slate-200',
+	percentageTextColour = 'text-slate-200',
+	processBarColour = 'bg-pink-400',
+}) => {
 	const frame = useCurrentFrame();
 	// const opacity = interpolate(frame, [30, 50], [0, 1], {
 	// 	extrapolateLeft: 'clamp',
 	// 	extrapolateRight: 'clamp',
 	// });
-	const progress = interpolate(frame, [0, componentLength], [0, 100], {
+	const progress = interpolate(frame, [0, durationInFrames], [0, 100], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 	});
 
 	const countdown = interpolate(
 		frame,
-		[0, componentLength],
-		[componentLength / 30, 0],
+		[0, durationInFrames],
+		[durationInFrames / 30, 0],
 		{
 			extrapolateLeft: 'clamp',
 			extrapolateRight: 'clamp',
@@ -32,16 +49,16 @@ export const ProgressTimer: React.FC<{
 	return (
 		<div className="px-8 w-full fixed bottom-16" style={{opacity: '0.8'}}>
 			<div className="flex justify-between mb-1 w-full">
-				<span className="text-8xl font-medium text-slate-200">
+				<span className={`text-8xl font-medium ${countdownTextColour}`}>
 					{countdownNumber}
 				</span>
-				<span className="text-6xl font-medium text-slate-200 ">
+				<span className={`text-6xl font-medium ${percentageTextColour}`}>
 					{progressNumber}%
 				</span>
 			</div>
 			<div className="w-full bg-gray-200 rounded-full h-8 text-center font-bold justify-center items-center">
 				<div
-					className="bg-pink-400 h-8 rounded-full "
+					className={`h-8 rounded-full ${processBarColour}`}
 					style={{width: `${progress}%`}}
 				></div>
 			</div>
