@@ -22,6 +22,7 @@ import {LofiSchema, lofiSchema} from './Schema/props.schema';
 export const RemotionRoot: React.FC = () => {
 	const props: LofiSchema = {
 		totalHours: 2,
+		backgroundPath: 'background.png',
 		sections: [
 			{
 				type: 'Pomodoro',

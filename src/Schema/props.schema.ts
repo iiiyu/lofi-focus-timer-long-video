@@ -17,6 +17,7 @@ export const lofiSectionSchema = z.object({
 export const lofiSchema = z.object({
 	totalHours: z.number(),
 	sections: z.array(lofiSectionSchema),
+	backgroundPath: z.string(),
 });
 
 export type LofiSchema = z.infer<typeof lofiSchema>;

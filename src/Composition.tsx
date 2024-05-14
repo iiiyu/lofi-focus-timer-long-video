@@ -20,6 +20,7 @@ import {ProgressStepsTimer} from './Components/ProgressStepsTimer';
 export const LofiComposition: React.FC<LofiSchema> = ({
 	totalHours: totalHours,
 	sections: sections,
+	backgroundPath: backgroundPath,
 }) => {
 	const frame = useCurrentFrame();
 	const fps = 30;
@@ -34,7 +35,7 @@ export const LofiComposition: React.FC<LofiSchema> = ({
 
 	return (
 		<AbsoluteFill className="bg-gray-100 justify-center items-center">
-			<Background />
+			<Background backgroundPath={backgroundPath} />
 			<LofiLogo />
 
 			{/* use sections every item */}

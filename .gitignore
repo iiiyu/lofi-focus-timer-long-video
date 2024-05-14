@@ -9,3 +9,4 @@ out
 /public/music.mp3
 *.mp3
 *.json
+/public/test/background.png
