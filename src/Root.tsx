@@ -4,9 +4,24 @@ import './style.css';
 import {getMinutesWithHours, minutesToFrames} from './Utilities/Tools';
 import {LofiSchema, lofiSchema} from './Schema/props.schema';
 
+// const calculateMetadata: CalculateMetadataFunction<lofiSchema> = ({
+//   props,
+//   defaultProps,
+//   abortSignal,
+// }) => {
+//   return {
+//     // Change the metadata
+//     durationInFrames: props.duration,
+//     // or transform some props
+//     props,
+//     // or add per-composition default codec
+//     defaultCodec: "h264",
+//   };
+// };
+
 export const RemotionRoot: React.FC = () => {
 	const props: LofiSchema = {
-		totalHours: 4,
+		totalHours: 2,
 		sections: [
 			{
 				type: 'Pomodoro',
@@ -77,6 +92,15 @@ export const RemotionRoot: React.FC = () => {
 				height={1080}
 				schema={lofiSchema}
 				defaultProps={props}
+				calculateMetadata={async ({props, defaultProps, abortSignal}) => {
+					const fps = 30;
+					const minutes = getMinutesWithHours(props.totalHours);
+					const totalFrames = minutesToFrames(minutes, fps) + 30 + 120;
+					return {
+						durationInFrames: totalFrames,
+						props,
+					};
+				}}
 			/>
 		</>
 	);

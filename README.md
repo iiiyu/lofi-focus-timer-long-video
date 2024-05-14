@@ -1,3 +1,11 @@
+# Lofi Focus Timer Video
+
+## Use props start
+
+```
+bun start --port=9527 --props=./public/test/props.json
+```
+
 # Remotion video with Tailwind
 
 <p align="center">
