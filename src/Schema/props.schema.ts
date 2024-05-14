@@ -11,6 +11,7 @@ export const lofiSectionSchema = z.object({
 	startVoice: lofiAudioDataSchema.nullish(),
 	endVoice: lofiAudioDataSchema.nullish(),
 	sectionDurationFrames: z.number(),
+	index: z.number().nullish(),
 });
 
 export const lofiSchema = z.object({
