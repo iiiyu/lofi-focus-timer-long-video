@@ -10,3 +10,4 @@ out
 *.mp3
 *.json
 /public/test/background.png
+*background.png

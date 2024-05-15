@@ -130,7 +130,7 @@ export const LofiVisualization: React.FC<{section: LofiSectionSchema}> = ({
 							lineThickness={16}
 							gapSize={8}
 							roundness={8}
-							color="#f0a2af"
+							color="#376b97"
 						/>
 					</div>
 					<div
@@ -144,7 +144,7 @@ export const LofiVisualization: React.FC<{section: LofiSectionSchema}> = ({
 							lineThickness={16}
 							gapSize={8}
 							roundness={8}
-							color="#f0a2af"
+							color="#376b97"
 						/>
 					</div>
 				</div>

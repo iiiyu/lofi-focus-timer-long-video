@@ -20,7 +20,7 @@ export type ProgressStepsTimerInputSchema = z.infer<
 export const ProgressStepsTimer: React.FC<ProgressStepsTimerInputSchema> = ({
 	absoluteFrame = 0,
 	type = 1,
-	countdownTextColour = 'text-slate-200',
+	countdownTextColour: textColour = 'text-slate-200',
 	processBarColour = 'bg-slate-400',
 	section = null,
 	subtitle = '',
@@ -60,7 +60,7 @@ export const ProgressStepsTimer: React.FC<ProgressStepsTimerInputSchema> = ({
 			view = (
 				<div style={{opacity: opacity}} className="flex flex-col gap-2">
 					<div className="flex justify-center w-full items-center">
-						<span className={`text-8xl font-medium ${countdownTextColour}`}>
+						<span className={`text-8xl font-medium ${textColour}`}>
 							{countdownNumber}
 						</span>
 					</div>
@@ -70,8 +70,8 @@ export const ProgressStepsTimer: React.FC<ProgressStepsTimerInputSchema> = ({
 							style={{width: `${progress}%`}}
 						></div>
 					</div>
-					<div className="flex justify-center items-center ">
-						<span className={`text-5xl font-thin text-slate-200 `}>
+					<div className={`flex justify-center items-center `}>
+						<span className={`text-5xl font-thin ${textColour} `}>
 							{subtitle}
 						</span>
 					</div>

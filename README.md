@@ -2,8 +2,15 @@
 
 ## Use props start
 
-```
+```shell
 bun start --port=9527 --props=./public/test/props.json
+bun start --port=9527 --props=./public/2024_05_15_10_43_English_5_hours/props.json
+```
+
+## Render
+
+```shell
+bun remotion render --output ./out/5hours.mp4 --timeout 300000000 --concurrency=4 --props=./public/2024_05_15_10_43_English_5_hours/props.json --gl angle
 ```
 
 # Remotion video with Tailwind

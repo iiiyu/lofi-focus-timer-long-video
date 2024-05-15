@@ -67,7 +67,8 @@ export const LofiComposition: React.FC<LofiSchema> = ({
 									absoluteFrame={frame}
 									type={1}
 									// durationInFrames={progressTimerFrames}
-									processBarColour={'bg-gray-200'}
+									processBarColour={'bg-gray-100'}
+									countdownTextColour={'text-white'}
 									section={section}
 									subtitle={subtitle}
 								/>
