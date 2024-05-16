@@ -1,20 +1,5 @@
 # Lofi Focus Timer Video
 
-## Use props start
-
-```shell
-bun start --port=9527 --props=./public/test/props.json
-bun start --port=9527 --props=./public/2024_05_15_10_43_English_5_hours/props.json
-```
-
-## Render
-
-```shell
-bun remotion render --output ./out/5hours.mp4 --timeout 300000000 --concurrency=4 --props=./public/2024_05_15_10_43_English_5_hours/props.json --gl angle
-```
-
-# Remotion video with Tailwind
-
 <p align="center">
   <a href="https://github.com/remotion-dev/logo">
     <picture>
@@ -24,52 +9,47 @@ bun remotion render --output ./out/5hours.mp4 --timeout 300000000 --concurrency=
   </a>
 </p>
 
-Welcome to your Remotion project!
+![image](docs/image1.png)
 
-## Commands
+Welcome to the Lofi Focus Timer Video project, a creative coding endeavor designed to transform your resources into a relaxing Lofi music video.
 
-**Install Dependencies**
+Discover more on my YouTube channel: [LofiFocus Timer](https://www.youtube.com/@LofiFocusTimer)
 
-```console
-npm i
+This tool enables you to craft a personalized Lofi music video by supplying your resources. Experience it firsthand by accessing the provided demo resources located at public/2024_05_16_12_26_English_1_hours.zip. Simply unzip the file and follow the instructions to get started.
+
+While the project's codebase may be straightforward, unrefined, and lacks documentation, it efficiently accomplishes the following six tasks:
+
+1. Incorporates an introduction sequence.
+2. Embeds a customizable logo.
+3. Sets up a background image.
+4. Layers the chosen audio tracks.
+5. Integrates audio visualization (Special thanks to: [Marcus Stenbeck](https://github.com/marcusstenbeck/remotion-audio-visualizers)).
+6. Features a progress timer to indicate video duration.
+
+## Getting Started
+
+The project utilizes bun as its package manager. You are free to choose any package manager that suits your development needs.
+
+### Setting Up the Demo
+
+To use the demo's resources:
+
+```shell
+unzip public/2024_05_16_12_26_English_1_hours.zip -d public/
 ```
 
-**Start Preview**
+### Initiating the Project
 
-```console
-npm start
+Launch the project with:
+
+```shell
+bun start --port=9527 --props=./public/2024_05_16_12_26_English_1_hours/props.json
 ```
 
-**Render video**
+### Rendering the Video
 
-```console
-npm run build
+Execute the following command to render your Lofi music video:
+
+```shell
+bun remotion render --output ./out/one_hours.mp4 --timeout 300000000 --concurrency=1 --props=./public/2024_05_16_12_26_English_1_hours/props.json --gl angle
 ```
-
-**Upgrade Remotion**
-
-```console
-npm run upgrade
-```
-
-## Using server-side rendering
-
-This template uses a [custom Webpack override](https://www.remotion.dev/docs/webpack). If you are using server-side rendering, you need to import the override function from `./src/webpack-override.ts` and pass it to [`bundle()`](https://www.remotion.dev/docs/bundle) (if using SSR) and [`deploySite()`](https://www.remotion.dev/docs/lambda/deploysite) (if using Lambda).
-
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-Get started with Tailwind by reading the ["Utility first" page](https://tailwindcss.com/docs/utility-first)
-
-## Help
-
-We provide help [on our Discord server](https://remotion.dev/discord).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. Read [the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
