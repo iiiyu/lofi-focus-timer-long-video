@@ -51,5 +51,6 @@ bun start --port=9527 --props=./public/2024_05_16_12_26_English_1_hours/props.js
 Execute the following command to render your Lofi music video:
 
 ```shell
-bun remotion render --output ./out/one_hours.mp4 --timeout 300000000 --concurrency=1 --props=./public/2024_05_16_12_26_English_1_hours/props.json --gl angle
+bun remotion render --output ./out/one_hours.mp4 --timeout 300000000 --concurrency=5 --props=./public/2024_05_24_16_19_English_1_hours/props.json
+
 ```
